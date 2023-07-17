@@ -30,7 +30,8 @@ import os
 import unicodedata
 from io import open
 
-from transformers.tokenization_bert import BertTokenizer, whitespace_tokenize
+from transformers import BertTokenizer
+from transformers.models.bert.tokenization_bert import BasicTokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -75,6 +76,5 @@ class UnilmTokenizer(BertTokenizer):
     max_model_input_sizes = PRETRAINED_POSITIONAL_EMBEDDINGS_SIZES
 
 
-class WhitespaceTokenizer(object):
-    def tokenize(self, text):
-        return whitespace_tokenize(text)
+class WhitespaceTokenizer(BasicTokenizer):
+    pass
